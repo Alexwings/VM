@@ -10,7 +10,7 @@ import UIKit
 
 class SplashController: UIViewController {
 
-    @IBOutlet weak var logoView: UIView!
+    @IBOutlet weak var logo: LogoView!
     
     private var timeRepeatsCounter = 0
     
@@ -19,13 +19,13 @@ class SplashController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let timer: Timer = Timer(timeInterval: 3, repeats: true) { (time) in
-            if self.timeRepeatsCounter < 3 {
+        let timer: Timer = Timer(timeInterval: 2, repeats: true) { (time) in
+            if self.timeRepeatsCounter < 2 {
                 self.logoBump()
                 self.timeRepeatsCounter += 1
             }else {
-                self.logoDisappear()
                 time.invalidate()
+                self.logoDisappear()
             }
         }
         RunLoop.current.add(timer, forMode: .defaultRunLoopMode)
@@ -40,15 +40,32 @@ class SplashController: UIViewController {
     
     //Event Methods
     
-    
-    
     //Mark Private Methods
     
     private func logoDisappear(){
         let jumpToSigin = {(this : SplashController) in
-            
+            this.performSegue(withIdentifier: "toUserAuthSegue", sender: nil)
         }
         //TODO add logoDisappear animation
+        logo.addDisappearAnimation { (finish) in
+            if finish {
+                self.logo.isHidden = true
+                self.logo.removeDisappearAnimation()
+                jumpToSigin(self)
+            }
+        }
+        
+    }
+    private func logoBump(){
+        logo.addVBumpAnimation { (finish) in
+            if finish {
+                self.logo.addMBumpAnimation(completion: { (finish) in
+                    if finish {
+                        self.logo.removeAllAnimations()
+                    }
+                })
+            }
+        }
     }
     
     private func setupViews(){
@@ -56,9 +73,7 @@ class SplashController: UIViewController {
     
     }
     
-    private func logoBump(){
-        //TODO add logo bump animation chain
-    }
+    
 
 }
 

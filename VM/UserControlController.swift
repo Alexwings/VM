@@ -20,10 +20,6 @@ class UserControlController: UIViewController {
         self.navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
-    @IBAction func loginButtonClicked(_ sender: UIButton) {
-    }
-    @IBAction func sigUpButtonClicked(_ sender: UIButton) {
-    }
     //Mark: Private Methods(Helper Methods)
     
 }

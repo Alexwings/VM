@@ -6,5 +6,6 @@ target 'VM' do
   use_frameworks!
 
   # Pods for VM
+  pod 'SlideMenuControllerSwift', '~> 3.0'
 
 end

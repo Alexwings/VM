@@ -42,6 +42,7 @@ import UIKit
     
     
     override func layoutSubviews() {
+        super.layoutSubviews()
         if let color = lineColor {
             underline.backgroundColor = color
         }
