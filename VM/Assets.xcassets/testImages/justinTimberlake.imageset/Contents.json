@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
+      "filename" : "justinTimberlake.jpg",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "LogoMred@2x.png",
       "scale" : "2x"
     },
     {

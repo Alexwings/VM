@@ -18,6 +18,7 @@ class ContainerController: SlideMenuController{
         let leftController = storyB.instantiateViewController(withIdentifier: "Left")
         leftViewController = leftController
         SlideMenuOptions.leftViewWidth = 200
+        SlideMenuOptions.hideStatusBar = false
         super.awakeFromNib()
     }
 
@@ -35,15 +36,4 @@ class ContainerController: SlideMenuController{
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

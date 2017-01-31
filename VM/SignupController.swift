@@ -73,6 +73,7 @@ class SignupController: UIViewController, UITextFieldDelegate {
                                                 Constants.UserParams.passwordKey : self.passwordTxtFld.text!]
                 UserAuthentication.loginViaHttp(params: dict, completion: { (re) in
                     if re.success {
+                        UserAuthentication.currentUser = dict
                         self.performSegue(withIdentifier: "signupToHomeSegue", sender: nil)
                         //TODO: some spin stops
                         print(re.data ?? "success, but no data")

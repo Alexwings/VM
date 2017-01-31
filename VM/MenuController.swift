@@ -11,7 +11,7 @@ import UIKit
 class MenuController: UITableViewController {
     
     @IBOutlet weak var logoHeaderView: UILabel!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
@@ -68,7 +68,7 @@ class MenuController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
         case 0:
-            performSegue(withIdentifier: "toResetPassworSegue", sender: nil)
+            performSegue(withIdentifier: "resetPasswordSegue", sender: nil)
             break
         case 1:
             UserAuthentication.currentUser = nil

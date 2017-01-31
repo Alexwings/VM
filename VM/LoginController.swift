@@ -40,9 +40,7 @@ class LoginController: UIViewController, UITextFieldDelegate{
         UserAuthentication.loginViaHttp(params: param) { (response) in
             if response.success {
                 UserAuthentication.currentUser = param
-                //TODO: login success jump to home screen, store user mobile info
                 self.performSegue(withIdentifier: "LoginToHomeSegue", sender: nil)
-                print(response.data!)
             }else{
                 self.showAlert(title:"Login Failed", message: response.errorMessage)
             }
@@ -56,9 +54,9 @@ class LoginController: UIViewController, UITextFieldDelegate{
     
     private func setupViews() {
         self.navigationController?.setNavigationBarHidden(false, animated: false)
-        self.navigationController?.navigationBar.barStyle = .blackTranslucent
         let back : UIBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(backButtonClicked))
         navigationItem.leftBarButtonItem = back
+        navigationItem.title = "Login in"
     }
     
     //MARK: UITextFieldDelegate

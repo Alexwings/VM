@@ -27,11 +27,6 @@ class ResetPasswordController: UIViewController, UITextFieldDelegate {
     
     //MARK: - Private Methods
     private func setupViews() {
-        self.navigationController?.setNavigationBarHidden(false, animated: false)
-        self.navigationController?.navigationBar.barStyle = .blackTranslucent
-        let back : UIBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(backButtonClicked))
-        navigationItem.leftBarButtonItem = back
-        
         let currMobile = UserAuthentication.currentUser?[Constants.UserParams.mobileKey] ?? " "
         mobileTxtFld.text = currMobile
         mobileTxtFld.isEnabled = false
@@ -39,8 +34,8 @@ class ResetPasswordController: UIViewController, UITextFieldDelegate {
     }
     
     //MARK: - Event Methods
-    func backButtonClicked() {
-        _ = navigationController?.popToRootViewController(animated: true)
+    @IBAction func backBarButton(_ sender: UIBarButtonItem) {
+        navigationController?.dismiss(animated: true, completion: nil)
     }
     @IBAction func resetButtonClicked() {
         guard validatePhone(text: mobileTxtFld.text) else {

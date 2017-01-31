@@ -43,8 +43,13 @@ class SplashController: UIViewController {
     //Mark Private Methods
     
     private func logoDisappear(){
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyBoard.instantiateViewController(withIdentifier: "UserAuthenEntry")
         let jumpToSigin = {(this : SplashController) in
-            this.performSegue(withIdentifier: "toUserAuthSegue", sender: nil)
+            UIView .animate(withDuration: 1, animations: {
+                self.view.alpha = 0;
+                self.present(vc, animated: false, completion: nil)
+            })
         }
         //TODO add logoDisappear animation
         logo.addDisappearAnimation { (finish) in
